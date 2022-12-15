@@ -19,6 +19,7 @@ return require('packer').startup(function(use)
   use 'nvim-lualine/lualine.nvim'
   use 'nvim-treesitter/nvim-treesitter'
   use 'arcticicestudio/nord-vim'
+  use 'github/copilot.vim'
   use {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
