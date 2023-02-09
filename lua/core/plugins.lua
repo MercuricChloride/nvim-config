@@ -18,6 +18,7 @@ return require('packer').startup(function(use)
   use 'nvim-tree/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
   use 'nvim-treesitter/nvim-treesitter'
+  use 'nvim-treesitter/playground'
   use 'arcticicestudio/nord-vim'
   use 'github/copilot.vim'
   use {
@@ -30,6 +31,8 @@ return require('packer').startup(function(use)
     tag = '0.1.0',
     requires = {{'nvim-lua/plenary.nvim'}}
   }
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
