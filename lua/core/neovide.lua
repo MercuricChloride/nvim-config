@@ -1,19 +1,15 @@
 -- if the current instance of nvim is neovide, then set the colorscheme to nord
 if vim.g.neovide then
 
+  -- hide mouse when typing
+  vim.g.neovide_hide_mouse_when_typing = false
+
   -- set guifont
   vim.g.guifont = { "DroidSansMono Nerd Font", "h14" }
   vim.opt.linespace = 0
 
-  vim.g.neovide_fullscreen = true
-
-  vim.g.neovide_input_use_logo = 1 -- enable use of the logo (cmd) key
-
-  -- greet user
-  vim.cmd "echo 'Welcome to neovide'"
-
-  -- set colorscheme
-  vim.cmd "colorscheme nord"
+  -- enable use of the logo (cmd) key
+  vim.g.neovide_input_use_logo = 1
 
   -- neovide scale factor
   vim.g.neovide_scale_factor = 1.0
