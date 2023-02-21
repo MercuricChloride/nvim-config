@@ -1,7 +1,7 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = {
-    "sumneko_lua",
+    "lua_ls",
     "solidity",
     "tsserver",
     "rust_analyzer",
@@ -9,16 +9,33 @@ require("mason-lspconfig").setup({
 })
 
 local on_attach = function(_, _)
-  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
-  vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {})
+  vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {noremap = true})
+  vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {noremap = true})
+  vim.keymap.set('n', '<leader>ch', vim.lsp.buf.hover, {noremap = true})
 
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implimentation, {})
-  vim.keymap.set('n', 'gr', require('telecopt.builtin').lsp_references, {})
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {noremap = true})
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implimentation, {noremap = true})
+  vim.keymap.set('n', 'gr', require('telecopt.builtin').lsp_references, {noremap = true})
 end
 
-require("lspconfig").sumneko_lua.setup {}
-require("lspconfig").solidity.setup {}
-require("lspconfig").tsserver.setup {}
-require("lspconfig").rust_analyzer.setup {}
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+require("lspconfig").lua_ls.setup {
+  on_attach = on_attach,
+  capabilites = capabilities,
+}
+
+require("lspconfig").solidity.setup {
+  on_attach = on_attach,
+  capabilites = capabilities,
+}
+
+require("lspconfig").tsserver.setup {
+  on_attach = on_attach,
+  capabilites = capabilities,
+}
+
+require("lspconfig").rust_analyzer.setup {
+  on_attach = on_attach,
+  capabilites = capabilities,
+}

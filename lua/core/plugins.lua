@@ -1,3 +1,10 @@
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
+
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -13,24 +20,36 @@ local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
-  use 'ellisonleao/gruvbox.nvim'
+
+  -- tree
   use 'nvim-tree/nvim-tree.lua'
   use 'nvim-tree/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
+
+  -- tree sitter
   use 'nvim-treesitter/nvim-treesitter'
   use 'nvim-treesitter/playground'
+
+  -- colorscheme
   use 'arcticicestudio/nord-vim'
+  use 'ellisonleao/gruvbox.nvim'
+
+  -- copilot
   use 'github/copilot.vim'
   use {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
     "neovim/nvim-lspconfig",
   }
+
+  -- telescope
   use {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.0',
     requires = {{'nvim-lua/plenary.nvim'}}
   }
+
+  -- completion
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
   -- Automatically set up your configuration after cloning packer.nvim
