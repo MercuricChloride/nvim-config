@@ -60,9 +60,34 @@ return require('packer').startup(function(use)
     require("toggleterm").setup()
   end}
 
+
+  -- neorg
+  use {
+      "nvim-neorg/neorg",
+      config = function()
+        require('neorg').setup()
+        --require('neorg').setup() {
+        --    load = {
+        --        ["core.defaults"] = {}, -- Loads default behaviour
+        --        ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
+        --        ["core.norg.dirman"] = { -- Manages Neorg workspaces
+        --            config = {
+        --                workspaces = {
+        --                    notes = "~/notes",
+        --                },
+        --            },
+        --        },
+        --    },
+        --}
+      end,
+      run = ":Neorg sync-parsers",
+      requires = "nvim-lua/plenary.nvim",
+  }
+
   -- completion
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then

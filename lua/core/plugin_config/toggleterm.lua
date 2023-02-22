@@ -25,10 +25,18 @@ local Terminal = require("toggleterm.terminal").Terminal
 
 local music = Terminal:new({ cmd = "music_dropdown", direction = "float", size = 10, float_opts = { border = "curved" } });
 
+local lazygit = Terminal:new({ cmd = "lazygit", direction = "float", size = 10, float_opts = { border = "curved" } });
+
 function _music_toggle()
   pomodoro.start()
   music:toggle()
 end
 
+function _lazygit_toggle()
+  lazygit:toggle()
+end
+
 vim.api.nvim_set_keymap("n", "<leader>m", "<cmd>lua _music_toggle()<CR>", {noremap = true, silent = true})
+
+vim.api.nvim_set_keymap("n", "<C-g>", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
 

@@ -8,3 +8,4 @@ require('core.plugin_config.copilot')
 require('core.plugin_config.completions')
 require('core.plugin_config.pomodoro')
 require('core.plugin_config.toggleterm')
+require('core.plugin_config.neorg');
